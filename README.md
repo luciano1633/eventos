@@ -124,22 +124,7 @@ query {
 
 ## 📤 Subir a GitHub y Desplegar en GitHub Pages
 
-### 🔧 Paso 1: Configurar vite.config.js
-
-**IMPORTANTE:** Antes de subir, actualiza `vite.config.js` con el nombre exacto de tu repositorio:
-
-```javascript
-base: '/eventos-TuNombre-TuApellido-SiglaCurso/',
-```
-
-**Ejemplo:** Si tu repo es `eventos-juan-perez-pgy3121`:
-```javascript
-base: '/eventos-juan-perez-pgy3121/',
-```
-
----
-
-### 📦 Paso 2: Crear Repositorio en GitHub
+### 📦 Paso 1: Crear Repositorio en GitHub
 
 1. Ve a https://github.com/new
 2. **Nombre:** `eventos-TuNombre-TuApellido-SiglaCurso`
@@ -149,7 +134,7 @@ base: '/eventos-juan-perez-pgy3121/',
 
 ---
 
-### 🚀 Paso 3: Subir el Proyecto
+### 🚀 Paso 2: Subir el Proyecto
 
 Ejecuta en la terminal (reemplaza con tu información):
 
@@ -175,7 +160,7 @@ git push -u origin main
 
 ---
 
-### 🌐 Paso 4: Activar GitHub Pages (Deploy Automático)
+### 🌐 Paso 3: Activar GitHub Pages (Deploy Automático)
 
 1. Ve a tu repositorio en GitHub
 2. Click en **Settings** (Configuración)
@@ -185,7 +170,7 @@ git push -u origin main
 
 **Tu sitio estará en:**
 ```
-https://TuUsuario.github.io/eventos-TuNombre-TuApellido-SiglaCurso/
+https://luciano1633.github.io/eventos/
 ```
 
 ⏱️ Espera 1-2 minutos para que se complete el despliegue.

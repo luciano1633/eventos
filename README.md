@@ -122,24 +122,25 @@ query {
 
 ---
 
-## 📤 Subir a GitHub y Desplegar en GitHub Pages
+## 📤 Subir a GitHub
 
-### 📦 Paso 1: Crear Repositorio en GitHub
+### Paso 1: Crear Repositorio en GitHub
 
 1. Ve a https://github.com/new
 2. **Nombre:** `eventos-TuNombre-TuApellido-SiglaCurso`
+   - Ejemplo: `eventos-juan-perez-pgy3121`
 3. Dejar en **Público**
 4. **NO** inicializar con README
 5. Click **Create repository**
 
 ---
 
-### 🚀 Paso 2: Subir el Proyecto
+### Paso 2: Subir el Proyecto
 
 Ejecuta en la terminal (reemplaza con tu información):
 
 ```powershell
-# Inicializar Git
+# Inicializar Git (si no está inicializado)
 git init
 
 # Agregar todos los archivos
@@ -160,75 +161,24 @@ git push -u origin main
 
 ---
 
-### 🌐 Paso 3: Activar GitHub Pages (Deploy Automático)
+### Paso 3: Compartir con el Docente
 
-1. Ve a tu repositorio en GitHub
-2. Click en **Settings** (Configuración)
-3. En el menú izquierdo → **Pages**
-4. En **Source** → Selecciona **GitHub Actions**
-5. ¡Listo! El workflow se ejecutará automáticamente
-
-**Tu sitio estará en:**
+Comparte la **URL del repositorio**:
 ```
-https://luciano1633.github.io/eventos/
+https://github.com/TuUsuario/eventos-TuNombre-TuApellido-SiglaCurso
 ```
 
-⏱️ Espera 1-2 minutos para que se complete el despliegue.
-
----
-
-### 🔄 Actualizaciones Futuras
-
-Cada vez que hagas cambios y los subas, se despliega automáticamente:
-
-```powershell
-git add .
-git commit -m "Descripción de los cambios"
-git push
-```
-
----
-
-### ⚠️ Notas Importantes sobre GitHub Pages
-
-1. **APIs Mock NO funcionarán** en GitHub Pages (solo acepta contenido estático)
-2. Los servidores REST y GraphQL **requieren ejecución local**
-3. En el sitio desplegado verás la interfaz completa pero sin datos dinámicos
-4. **Para demostración completa:** Usa el proyecto localmente con los 3 servidores
-5. **Para producción real:** Las APIs necesitarían estar en servicios como Railway, Vercel, o Render
+⚠️ **Importante:** Este proyecto requiere ejecución local para funcionar completamente. GitHub solo almacena el código, pero no puede ejecutar los servidores REST y GraphQL.
 
 ---
 
 ### 📝 Checklist de Entrega
 
-- [ ] `vite.config.js` actualizado con nombre del repo
 - [ ] Repositorio creado en GitHub con nombre correcto
 - [ ] Código subido con `git push`
-- [ ] GitHub Pages activado (Settings → Pages → GitHub Actions)
-- [ ] Sitio desplegado y funcionando
 - [ ] URL del repositorio compartida con docente
-- [ ] URL del sitio desplegado compartida con docente
-
----
-
-### 🆘 Solución de Problemas GitHub Pages
-
-**Página en blanco:**
-- Verifica que `base` en `vite.config.js` coincida **exactamente** con el nombre del repo
-- Debe tener barras: `/nombre-repo/`
-- Rebuild: `npm run build`
-
-**Error 404:**
-- Confirma que GitHub Pages está en modo **GitHub Actions**
-- Espera unos minutos, puede tardar
-
-**CSS/imágenes no cargan:**
-- Revisa que `base` en `vite.config.js` sea correcto
-- Verifica que el build se completó sin errores en la pestaña **Actions**
-
-**No aparecen los eventos:**
-- Normal, las APIs mock requieren servidores Node.js (no funcionan en GitHub Pages estático)
-- Muestra el proyecto funcionando localmente para la demostración completa
+- [ ] README.md incluido con instrucciones
+- [ ] Proyecto funciona localmente (3 servidores corriendo)
 
 ---
 

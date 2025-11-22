@@ -8,8 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "server": "json-server --watch server/db.json --port 3001",
-    "graphql": "node server/index.js",
-    "deploy": "npm run build && cd dist && git init && git add -A && git commit -m 'Deploy to GitHub Pages' && git push -f git@github.com:TuUsuario/eventos-nombre-apellido-siglaCurso.git main:gh-pages && cd .."
+    "graphql": "node server/index.js"
   },
   "dependencies": {
     "@apollo/client": "^3.8.8",

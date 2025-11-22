@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test GraphQL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #5568d3;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid #ddd;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test GraphQL Server</h1>
+        <p>Prueba el servidor GraphQL haciendo click en los botones:</p>
+        
+        <button onclick="testEvento1()">Probar Evento 1</button>
+        <button onclick="testEvento2()">Probar Evento 2</button>
+        <button onclick="testEvento3()">Probar Evento 3</button>
+        <button onclick="testTodos()">Probar Todos</button>
+        
+        <h3>Resultado:</h3>
+        <div id="status"></div>
+        <pre id="resultado">Haz click en un botón para probar...</pre>
+    </div>
+
+    <script>
+        const GRAPHQL_URL = 'http://localhost:4000/graphql';
+
+        async function testEvento(id) {
+            const query = `
+                query {
+                    eventoDetalle(id: ${id}) {
+                        id
+                        organizador
+                        asistentesConfirmados
+                        descripcion
+                        capacidadMaxima
+                        precio
+                        requisitos
+                    }
+                }
+            `;
+
+            try {
+                const response = await fetch(GRAPHQL_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ query })
+                });
+
+                const data = await response.json();
+                
+                if (data.errors) {
+                    document.getElementById('status').innerHTML = 
+                        '<span class="error">❌ Error en la consulta</span>';
+                    document.getElementById('resultado').textContent = 
+                        JSON.stringify(data.errors, null, 2);
+                } else {
+                    document.getElementById('status').innerHTML = 
+                        '<span class="success">✅ Servidor GraphQL funcionando correctamente</span>';
+                    document.getElementById('resultado').textContent = 
+                        JSON.stringify(data.data, null, 2);
+                }
+            } catch (error) {
+                document.getElementById('status').innerHTML = 
+                    '<span class="error">❌ Error de conexión</span>';
+                document.getElementById('resultado').textContent = 
+                    `Error: ${error.message}\n\n¿El servidor GraphQL está corriendo en el puerto 4000?`;
+            }
+        }
+
+        function testEvento1() { testEvento(1); }
+        function testEvento2() { testEvento(2); }
+        function testEvento3() { testEvento(3); }
+        
+        async function testTodos() {
+            document.getElementById('status').innerHTML = 
+                '⏳ Probando eventos 1, 2 y 3...';
+            
+            let resultados = [];
+            for (let i = 1; i <= 3; i++) {
+                const query = `
+                    query {
+                        eventoDetalle(id: ${i}) {
+                            id
+                            organizador
+                            asistentesConfirmados
+                        }
+                    }
+                `;
+
+                try {
+                    const response = await fetch(GRAPHQL_URL, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ query })
+                    });
+                    const data = await response.json();
+                    resultados.push(data);
+                } catch (error) {
+                    resultados.push({ error: error.message });
+                }
+            }
+            
+            document.getElementById('status').innerHTML = 
+                '<span class="success">✅ Tests completados</span>';
+            document.getElementById('resultado').textContent = 
+                JSON.stringify(resultados, null, 2);
+        }
+
+        // Test automático al cargar
+        window.onload = () => {
+            setTimeout(() => {
+                document.getElementById('status').innerHTML = 
+                    '⏳ Verificando conexión...';
+                testEvento1();
+            }, 500);
+        };
+    </script>
+</body>
+</html>

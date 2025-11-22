@@ -1,0 +1,71 @@
+{
+  "eventos": [
+    {
+      "id": 1,
+      "nombre": "Concierto de Rock en Vivo",
+      "fecha": "2025-12-15",
+      "lugar": "Estadio Nacional",
+      "categoria": "Conciertos",
+      "imagen": "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800",
+      "agotado": true
+    },
+    {
+      "id": 2,
+      "nombre": "Conferencia de Tecnología 2025",
+      "fecha": "2025-11-28",
+      "lugar": "Centro de Convenciones",
+      "categoria": "Conferencias",
+      "imagen": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800",
+      "agotado": true
+    },
+    {
+      "id": 3,
+      "nombre": "Festival de Jazz",
+      "fecha": "2026-01-20",
+      "lugar": "Parque Forestal",
+      "categoria": "Conciertos",
+      "imagen": "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?w=800",
+      "agotado": true
+    },
+    {
+      "id": 4,
+      "nombre": "Expo Innovación Digital",
+      "fecha": "2025-12-05",
+      "lugar": "Espacio Riesco",
+      "categoria": "Conferencias",
+      "imagen": "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800"
+    },
+    {
+      "id": 5,
+      "nombre": "Concierto Sinfónico",
+      "fecha": "2025-12-10",
+      "lugar": "Teatro Municipal",
+      "categoria": "Conciertos",
+      "imagen": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=800"
+    },
+    {
+      "id": 6,
+      "nombre": "Cumbre de Emprendimiento",
+      "fecha": "2026-02-14",
+      "lugar": "Hotel W Santiago",
+      "categoria": "Conferencias",
+      "imagen": "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800"
+    },
+    {
+      "id": 7,
+      "nombre": "Festival Electrónico",
+      "fecha": "2026-01-15",
+      "lugar": "Movistar Arena",
+      "categoria": "Conciertos",
+      "imagen": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800"
+    },
+    {
+      "id": 8,
+      "nombre": "Congreso de Marketing Digital",
+      "fecha": "2025-11-25",
+      "lugar": "Centro Eventos CasaPiedra",
+      "categoria": "Conferencias",
+      "imagen": "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800"
+    }
+  ]
+}

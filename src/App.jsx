@@ -12,9 +12,12 @@ const client = new ApolloClient({
 })
 
 function App() {
+  // Detectar si estamos en GitHub Pages o desarrollo local
+  const basename = import.meta.env.MODE === 'production' ? '/eventos' : '/'
+  
   return (
     <ApolloProvider client={client}>
-      <Router>
+      <Router basename={basename}>
         <Layout>
           <Routes>
             <Route path="/" element={<EventList />} />

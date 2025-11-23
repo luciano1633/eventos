@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import EventCard from './EventCard'
+import { eventosMock } from '../data/eventosData'
 import '../css/EventList.css'
 
 function EventList() {
@@ -8,15 +9,21 @@ function EventList() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [filtroCategoria, setFiltroCategoria] = useState('Todos')
+  const [usandoMock, setUsandoMock] = useState(false)
 
   useEffect(() => {
     const fetchEventos = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/eventos')
+        // Intentar cargar desde API REST primero
+        const response = await axios.get('http://localhost:3001/eventos', { timeout: 2000 })
         setEventos(response.data)
+        setUsandoMock(false)
         setLoading(false)
       } catch (err) {
-        setError('Error al cargar los eventos. Asegúrate de que el servidor esté ejecutándose.')
+        // Si falla (ej: GitHub Pages), usar datos mock
+        console.log('API REST no disponible, usando datos mock')
+        setEventos(eventosMock)
+        setUsandoMock(true)
         setLoading(false)
       }
     }
@@ -41,19 +48,14 @@ function EventList() {
     )
   }
 
-  if (error) {
-    return (
-      <div className="container">
-        <div className="error">
-          <p>⚠️ {error}</p>
-          <p className="error-hint">Ejecuta: <code>npx json-server server/db.json --port 3001</code></p>
-        </div>
-      </div>
-    )
-  }
-
   return (
     <div className="container">
+      {usandoMock && (
+        <div className="modo-demo-banner">
+          ℹ️ Modo Demo - Para ver las APIs mock funcionando, ejecuta localmente con los servidores
+        </div>
+      )}
+      
       <div className="page-header">
         <h2>Descubre Eventos Increíbles</h2>
         <p>Explora los mejores conciertos, conferencias y más</p>

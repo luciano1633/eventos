@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import { gql, useQuery } from '@apollo/client'
 import axios from 'axios'
 import ReservaModal from './ReservaModal'
+import { eventosMock, eventosDetallesMock } from '../data/eventosData'
 import '../css/EventDetail.css'
 
 const GET_EVENT_DETAILS = gql`
@@ -24,19 +25,26 @@ function EventDetail() {
   const [eventoBasico, setEventoBasico] = useState(null)
   const [loadingBasico, setLoadingBasico] = useState(true)
   const [mostrarModal, setMostrarModal] = useState(false)
+  const [usandoMock, setUsandoMock] = useState(false)
   
   const { loading: loadingGraphQL, error: errorGraphQL, data } = useQuery(GET_EVENT_DETAILS, {
-    variables: { id: parseInt(id) }
+    variables: { id: parseInt(id) },
+    skip: false // Intentar siempre
   })
 
   useEffect(() => {
     const fetchEventoBasico = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/eventos/${id}`)
+        const response = await axios.get(`http://localhost:3001/eventos/${id}`, { timeout: 2000 })
         setEventoBasico(response.data)
+        setUsandoMock(false)
         setLoadingBasico(false)
       } catch (err) {
-        console.error('Error al cargar evento básico:', err)
+        // Si falla, usar datos mock
+        console.log('API REST no disponible, usando datos mock')
+        const eventoMock = eventosMock.find(e => e.id === parseInt(id))
+        setEventoBasico(eventoMock)
+        setUsandoMock(true)
         setLoadingBasico(false)
       }
     }
@@ -60,18 +68,6 @@ function EventDetail() {
     )
   }
 
-  if (errorGraphQL) {
-    return (
-      <div className="container">
-        <div className="error">
-          <p>⚠️ Error al cargar detalles adicionales del evento.</p>
-          <p className="error-hint">Asegúrate de que el servidor GraphQL esté ejecutándose en el puerto 4000.</p>
-          <Link to="/" className="btn-volver">← Volver a Eventos</Link>
-        </div>
-      </div>
-    )
-  }
-
   if (!eventoBasico) {
     return (
       <div className="container">
@@ -83,12 +79,19 @@ function EventDetail() {
     )
   }
 
-  const detalles = data?.eventoDetalle
+  // Usar datos de GraphQL si están disponibles, sino usar mock
+  const detalles = data?.eventoDetalle || eventosDetallesMock[parseInt(id)]
+  const usandoMockCompleto = usandoMock || errorGraphQL
 
   // Si el evento está agotado, mostrar página de agotado
   if (eventoBasico.agotado) {
     return (
       <div className="container">
+        {usandoMockCompleto && (
+          <div className="modo-demo-banner">
+            ℹ️ Modo Demo - Para ver las APIs mock funcionando, ejecuta localmente con los servidores
+          </div>
+        )}
         <Link to="/" className="btn-back">← Volver a Eventos</Link>
         
         <div className="event-detail-card evento-agotado-detalle">
@@ -148,6 +151,11 @@ function EventDetail() {
 
   return (
     <div className="container">
+      {usandoMockCompleto && (
+        <div className="modo-demo-banner">
+          ℹ️ Modo Demo - Para ver las APIs mock funcionando, ejecuta localmente con los servidores
+        </div>
+      )}
       <Link to="/" className="btn-back">← Volver a Eventos</Link>
       
       <div className="event-detail-card">

@@ -9,7 +9,6 @@ Aplicación web completa para explorar eventos. Desarrollada con **React, HTML, 
 **🔗 [Ver Aplicación en GitHub Pages](https://luciano1633.github.io/eventos)**
 
 > **Nota:** La demo online funciona con datos mock integrados. Para ver las APIs REST y GraphQL en acción, ejecuta el proyecto localmente.
-
 ---
 
 ## 🚀 Inicio Rápido

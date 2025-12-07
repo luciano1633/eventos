@@ -33,7 +33,8 @@ export const eventosMock = [
     fecha: "2025-12-05",
     lugar: "Espacio Riesco",
     categoria: "Conferencias",
-    imagen: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800"
+    imagen: "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800",
+    agotado: false
   },
   {
     id: 5,
@@ -41,7 +42,8 @@ export const eventosMock = [
     fecha: "2025-12-10",
     lugar: "Teatro Municipal",
     categoria: "Conciertos",
-    imagen: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=800"
+    imagen: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?w=800",
+    agotado: false
   },
   {
     id: 6,
@@ -49,7 +51,8 @@ export const eventosMock = [
     fecha: "2026-02-14",
     lugar: "Hotel W Santiago",
     categoria: "Conferencias",
-    imagen: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800"
+    imagen: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800",
+    agotado: false
   },
   {
     id: 7,
@@ -57,7 +60,8 @@ export const eventosMock = [
     fecha: "2026-01-10",
     lugar: "Movistar Arena",
     categoria: "Conciertos",
-    imagen: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800"
+    imagen: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800",
+    agotado: false
   },
   {
     id: 8,
@@ -65,7 +69,8 @@ export const eventosMock = [
     fecha: "2025-12-20",
     lugar: "CasaPiedra",
     categoria: "Conferencias",
-    imagen: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800"
+    imagen: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800",
+    agotado: false
   }
 ];
 

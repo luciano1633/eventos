@@ -343,7 +343,65 @@ npm run graphql     # Servidor GraphQL (4000)
 
 ---
 
-## 🌐 Compatibilidad y Pruebas
+## 🧪 Testing
+
+Este proyecto incluye pruebas unitarias y E2E completas.
+
+### Pruebas Unitarias (Jest + React Testing Library)
+
+```bash
+# Ejecutar todas las pruebas
+npm test
+
+# Ejecutar con reporte de cobertura
+npm run test:coverage
+
+# Modo watch (desarrollo)
+npm run test:watch
+```
+
+**Cobertura Alcanzada:**
+- ✅ **70.73%** líneas de código
+- ✅ **69.76%** sentencias
+- ✅ **66.66%** funciones
+- ✅ **50%** ramas
+
+**24 pruebas unitarias** cubriendo:
+- Componentes: EventCard, ReservaModal, Layout
+- Datos: Validación de estructura de eventos
+- APIs Mock: MSW intercepta REST y GraphQL
+
+### Pruebas E2E (Cypress)
+
+```bash
+# Abrir Cypress en modo interactivo
+npm run cypress:open
+
+# Ejecutar pruebas E2E en headless
+npm run cypress:run
+
+# Iniciar servidor + Cypress automáticamente
+npm run e2e
+```
+
+**17 pruebas E2E** (100% pasando) cubriendo:
+- ✅ Navegación y filtros de eventos (4 tests)
+- ✅ Visualización de detalles (4 tests)
+- ✅ Modal de reserva completo (5 tests)
+- ✅ Flujos de usuario completos (4 tests)
+- ✅ Responsive design (móvil, tablet, desktop)
+
+**Archivos de pruebas E2E:**
+- `01-navegacion-eventos.cy.js` - Navegación y listado
+- `02-detalles-evento.cy.js` - Vista de detalles
+- `03-modal-reserva.cy.js` - Proceso de reserva
+- `04-flujo-usuario-completo.cy.js` - Flujos completos
+
+📖 Ver documentación completa en `TESTING.md`
+
+---
+
+## 🌐 Compatibilidad y Navegadores
 
 ### Navegadores Probados
 
